@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+</head>
+<body>
+
+<h3>Product Management Operations</h3>
+
+<button onclick="fetchUser()">Fetch Products</button>
+<button onclick="addUser()">Add Product</button>
+<button onclick="updateUser()">Update Product</button>
+<button onclick="deleteUser()">Delete Product</button>
+
+<ul id="productlist"></ul>
+
+<script>
+    // JSON data (local)
+    const jsonData = `[
+        {"id":1,"item":"Laptop","price":60000},
+        {"id":2,"item":"Mouse","price":500},
+        {"id":3,"item":"Keyboard","price":700},
+        {"id":4,"item":"Speaker","price":5000}
+    ]`;
+
+    let productData = JSON.parse(jsonData);
+    const list = document.getElementById("productlist");
+
+    // FETCH (READ)
+    function fetchUser() {
+        list.innerHTML = "";
+        productData.forEach(product => {
+            const li = document.createElement("li");
+            li.textContent = `ID: ${product.id} | ${product.item} - ₹${product.price}`;
+            list.appendChild(li);
+        });
+    }
+
+    // ADD
+    function addUser() {
+        const item = prompt("Enter product name");
+        const price = prompt("Enter product price");
+
+        const newProduct = {
+            id: productData.length + 1,
+            item: item,
+            price: Number(price)
+        };
+
+         
+        productData.push(newProduct);
+
+    alert("Product added successfully (POST)");
+    fetchUser();
+    }
+        
+    // UPDATE
+    function updateUser() {
+        const id = Number(prompt("Enter product ID to update"));
+
+        
+        product.item = prompt("Enter new product name", product.item);
+        product.price = Number(prompt("Enter new price", product.price));
+
+        alert("Product updated successfully");
+        fetchUser();
+    }
+
+    // DELETE
+    function deleteUser() {
+    const id = Number(prompt("Enter product ID to delete"));
+
+    // Find index (like DELETE /products/{id})
+    const index = productData.findIndex(p => p.id === id);
+
+    if (index === -1) {
+        alert("Product not found");
+        return;
+    }
+
+    // DELETE operation
+    productData.splice(index, 1);
+
+    alert("Product deleted successfully (DELETE)");
+    fetchUser();
+}
+
+</script>
+
+</body>
+</html>
