@@ -1,0 +1,28 @@
+{
+  "courses": [
+    {
+      "title": "React Mastery",
+      "description": "Learn React from beginner to advanced level."
+    },
+    {
+      "title": "Java Programming",
+      "description": "Master core Java with hands-on projects."
+    },
+    {
+      "title": "Python for Data Science",
+      "description": "Analyze data and build ML models using Python."
+    },
+    {
+      "title": "Cyber Security",
+      "description": "Protect systems and networks from attacks."
+    },
+    {
+      "title": "AWS Cloud",
+      "description": "Deploy and manage apps on AWS."
+    },
+    {
+      "title": "Full Stack Dev",
+      "description": "Build real-world full stack applications."
+    }
+  ]
+}

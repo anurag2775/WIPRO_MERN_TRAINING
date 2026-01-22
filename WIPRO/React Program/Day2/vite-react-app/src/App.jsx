@@ -1,30 +1,27 @@
-import { useState } from "react";
-import Courses from './components/Courses'
-import Searchbox from  './components/Searchbox'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from   './components/Hero'
-import CardSection from  './components/CardSection'
-import Footer from   './components/Footer'
-import './App.css'
-
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <Hero />
-      <div  className="flex justify-center my-10">
-     <Searchbox />
+
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </div>
-      <Courses />
-      <CardSection />
+
       <Footer />
     </div>
-    </>
   )
 }
 
 export default App
+
