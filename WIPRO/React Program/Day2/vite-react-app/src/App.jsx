@@ -7,10 +7,13 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
 import ProtectedRoute from './components/ProtectedRoute'
+import useTheme from './hooks/useTheme'
 
 function App() {
+  const { theme } = useTheme();
+
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <div className={theme === "dark" ? "bg-gray-900 text-white min-h-screen" : "bg-white text-black min-h-screen"}>
       <Header />
 
       <div className="flex-grow">
@@ -20,7 +23,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
 
-          {/* Protected Admin Route */}
           <Route
             path="/admin"
             element={
@@ -38,4 +40,5 @@ function App() {
 }
 
 export default App
+
 
