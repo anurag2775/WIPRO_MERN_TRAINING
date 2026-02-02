@@ -280,6 +280,7 @@ Datasets
 •	products table: contains product details (product_id, product_name, category_id, price, supplier_id).
 
 ------------------------------------------------------------------------------------------------------------------------------
+------SOME USEFUL QUERY-----
 select count(*) from employees group by dept_id;
 select avg(salary) from employees group by dept_id;
 select day(current_date());
