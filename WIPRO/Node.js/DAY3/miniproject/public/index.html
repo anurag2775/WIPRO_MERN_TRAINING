@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Backend Demo</title>
+</head>
+<body>
+
+    <h2>Company Backend Demo</h2>
+
+    <button onclick="healthCheck()">Health Check</button>
+    <button onclick="loginUser()">Login User</button>
+    <button onclick="viewUsers()">View Users</button>
+
+    <pre id="result"></pre>
+
+    <script>
+        function healthCheck() {
+            fetch('/health')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                })
+                .catch(() => {
+                    document.getElementById("result").innerText =
+                        "Error connecting to server";
+                });
+        }
+
+        function loginUser() {
+            fetch('/login')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("result").innerText = data.message;
+                })
+                .catch(() => {
+                    document.getElementById("result").innerText =
+                        "Login failed";
+                });
+        }
+
+        function viewUsers() {
+            fetch('/users')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("result").innerText =
+                        JSON.stringify(data, null, 2);
+                })
+                .catch(() => {
+                    document.getElementById("result").innerText =
+                        "Error fetching users";
+                });
+        }
+    </script>
+
+</body>
+</html>
+
+
