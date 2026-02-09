@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h2>Admin Broadcast</h2>
+
+  <form id="form">
+    <input type="text" name="message" placeholder="Message" required />
+    <input type="file" name="file" />
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    document.getElementById("form").onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      const res = await fetch("/admin/send", {
+        method: "POST",
+        headers: { "x-admin": "true" },
+        body: formData
+      });
+
+      alert(await res.text());
+    };
+  </script>
+</body>
+</html>

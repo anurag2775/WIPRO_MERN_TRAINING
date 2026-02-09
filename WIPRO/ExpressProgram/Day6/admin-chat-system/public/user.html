@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Messages</title>
+</head>
+<body>
+  <h2>Messages</h2>
+  <ul id="list"></ul>
+
+  <script>
+    async function loadMessages() {
+      const res = await fetch("/user/messages");
+      const data = await res.json();
+
+      document.getElementById("list").innerHTML = data
+        .map(m => `
+          <li>
+            ${m.text || ""}
+            ${m.file ? `<a href="${m.file}" target="_blank">File</a>` : ""}
+          </li>
+        `)
+        .join("");
+    }
+
+    loadMessages();
+    setInterval(loadMessages, 3000);
+  </script>
+</body>
+</html>
